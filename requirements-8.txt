@@ -1,0 +1,16 @@
+# Telegram MTProto — Pyrofork (active fork of dead Pyrogram, Dec 2025)
+pyrofork==2.3.34
+TgCrypto
+
+# Gemini AI — new unified SDK (old google-generativeai is deprecated)
+google-genai>=2.0.0
+
+# Web server (health endpoint for Render keep-alive)
+fastapi==0.136.1
+uvicorn[standard]
+
+# Async SQLite
+aiosqlite
+
+# Env vars
+python-dotenv

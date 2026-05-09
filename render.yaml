@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: aditya-ai-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+
+    # Persistent disk — survives redeploys (SQLite lives here)
+    disk:
+      name: bot-data
+      mountPath: /data
+      sizeGB: 1
+
+    envVars:
+      - key: TELEGRAM_API_ID
+        sync: false          # set manually in Render dashboard
+      - key: TELEGRAM_API_HASH
+        sync: false
+      - key: SESSION_STRING
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DB_PATH
+        value: /data/bot.db
+      - key: PORT
+        value: "8000"
