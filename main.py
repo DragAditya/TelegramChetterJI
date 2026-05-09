@@ -8,6 +8,11 @@ Commands (any chat, dot prefix):
 """
 
 import asyncio
+
+# Fix: Python 3.14 no longer auto-creates event loop at import time.
+# Pyrofork's sync.py calls get_event_loop() on import — must set it first.
+asyncio.set_event_loop(asyncio.new_event_loop())
+
 import random
 
 import uvicorn
