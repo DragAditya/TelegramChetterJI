@@ -239,15 +239,26 @@ async def start_pyrogram():
 
     global _my_id
 
-    print("🚀 Starting Pyrogram...")
+    try:
 
-    await app.start()
+        print("🚀 Starting Pyrogram...")
 
-    me = await app.get_me()
+        await app.start()
 
-    _my_id = me.id
+        print("✅ LOGIN SUCCESS")
 
-    print(f"✅ Logged in as @{me.username}")
+        me = await app.get_me()
+
+        _my_id = me.id
+
+        print(f"✅ Logged in as @{me.username}")
+        print(f"🆔 My ID: {_my_id}")
+
+        await idle()
+
+    except Exception as e:
+
+        print(f"❌ PYROGRAM ERROR: {e}")
 
 
 # ─────────────────────────────────────────────────────────────
