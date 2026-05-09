@@ -1,3 +1,4 @@
+import os
 import json
 import aiosqlite
 from config import DB_PATH
@@ -5,7 +6,9 @@ from config import DB_PATH
 
 # ─── Init ──────────────────────────────────────────────────────────────────────
 
+
 async def init_db():
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     async with aiosqlite.connect(DB_PATH) as db:
         await db.executescript("""
             CREATE TABLE IF NOT EXISTS users (
